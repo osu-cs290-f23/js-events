@@ -2,10 +2,14 @@ var allWords = [];
 var currentWord = 0;
 
 function handleNewWordsEntered(event) {
-  var text = '';
+  console.log("== New text was added")
+
+  var text = event.target.value;
+  console.log("  -- text:", text)
   allWords = text.replace(/[!"#$%&\\'()\*+,\-\.\/:;<=>?@\[\\\]\^_`{|}~]/g, '')
     .toLowerCase().split(' ');
-  currentWord = 0;
+  console.log("  -- allWords:", allWords)
+    // currentWord = 0;
 }
 
 function generateWordElem(word, highlightColor) {
@@ -18,3 +22,10 @@ function generateWordElem(word, highlightColor) {
   }
   return wordElem;
 }
+
+var wordsEntryArea = document.getElementById("words-input")
+wordsEntryArea.addEventListener(
+  // "input",
+  "change",
+  handleNewWordsEntered
+)
